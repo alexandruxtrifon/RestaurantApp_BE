@@ -1,0 +1,18 @@
+[
+    {
+        "id": "1",
+        "tip": "similipiatra",
+        "descriere": "Similipiatra este o tencuială pe bază de ciment/var hidraulic și griș de piatră al cărei aspect, prin tratare, imită piatra naturală. Ea face parte din familia de tencuieli de ciment care au început să apară la începutul secolului XX în Europa, odată cu inventarea cimentului Portland și folosirea lui pe scară largă în construcții. ",
+        "retete": [
+            {
+                "nume": "Grundul",
+                "materiale": "(1:2:6) 1 parte ciment / 2 părți var / 6 părți nisip."
+            },
+            {
+                "nume": "Stratul finit (tinci) - mai subtire",
+                "materiale": "(1:1+½:2+½) 1 parte ciment / 1 + ½ părți griș de piatră / 2 + ½ părți nisip."
+            }
+        ],
+        "concluzii": "Analizele de laborator au ridicat mai multe întrebări legate de compoziția mortarelor interbelice. În urma rezultatelor, observăm că rețetele sunt diferite față de cele propuse de Victor Asquini și putem deduce că acestea variau printre meșteri. Cel mai probabil, rețetele au evoluat pe parcursul anilor 1918-1940, de la folosirea într-o pondere mai mare a varului hidraulic, la începutul perioadei, până la înlocuirea lui treptată cu ciment. Ar fi necesare mai multe analize pentru a stabili o regulă generală a practicii interbelice."
+    }
+]
