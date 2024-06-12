@@ -6,16 +6,14 @@ const sql = require('mssql');
 const Connection =require('tedious').Connection;
 
 const config = {
-    server: 'ALEXANDRUT-PC\\SQLEXPRESS',
-    authentication: {
-        type: 'default',
-        options: {
-            userName: 'sa',
-            password: 'Sysadmin123#'
-        }
-    },
+    server: 'ALEXANDRUT-PC',
+    user: 'SA',
+    //userName: 'sa',
+    password: 'Sysadmin123#',
+    instancename: 'SQLEXPRESS',
     options: {
         database: 'RetetarTencuieliArtDeco_DB',
+        trustServerCertificate: true
     }
 };
 var connection = new Connection(config);
@@ -42,7 +40,7 @@ const server = http.createServer((req, res) =>{
     }
 
 });
-//jhgfsdf
+//jhgfsdfgjh
 const PORT = 3000;
 server.listen(PORT, () => console.log(`Server running on port: http://localhost:${PORT}`));
 
