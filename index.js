@@ -8,7 +8,6 @@ const Connection =require('tedious').Connection;
 const config = {
     server: 'ALEXANDRUT-PC',
     user: 'SA',
-    //userName: 'sa',
     password: 'Sysadmin123#',
     instancename: 'SQLEXPRESS',
     options: {
@@ -40,7 +39,7 @@ const server = http.createServer((req, res) =>{
     }
 
 });
-//jhgfsdfgjh
+//jhgfsdfgjhhhkjh
 const PORT = 3000;
 server.listen(PORT, () => console.log(`Server running on port: http://localhost:${PORT}`));
 
