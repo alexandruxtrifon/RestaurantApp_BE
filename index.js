@@ -4,17 +4,8 @@ const retete = require('./data/retete');
 const routes = require('./routes');
 const sql = require('mssql');
 const Connection =require('tedious').Connection;
+var config = require('./config');
 
-const config = {
-    server: 'ALEXANDRUT-PC',
-    user: 'SA',
-    password: 'Sysadmin123#',
-    instancename: 'SQLEXPRESS',
-    options: {
-        database: 'RetetarTencuieliArtDeco_DB',
-        trustServerCertificate: true
-    }
-};
 var connection = new Connection(config);
 connection.on('connect', function(err) {
     console.log("Connected");
@@ -39,7 +30,10 @@ sql.connect(config, err => {
 });*/
 
 const server = http.createServer(async (req, res) => {
-    if(req.url === '/data/retete'){
+    const reqUrl = url.parse(req.url, true);
+    const path = reqUrl.pathname;
+    const query = reqUrl.query;
+    if(path === '/data/retete' && req.method === 'GET') {
         try{
             await sql.connect(config);
 
@@ -55,8 +49,25 @@ const server = http.createServer(async (req, res) => {
         } finally {
             sql.close();
         } 
+    } else if (path.includes('/data/retete/') && req.method === 'GET'){
+        const id = path.split('/')[3];
+        try {
+            await sql.connect(config);
+            const queryResult = await sql.query(`SELECT d.Descriere FROM Descriere d INNER JOIN Tencuiala t ON d.Cod_Tencuiala = t.Cod_Tencuiala WHERE t.Cod_Tencuiala = ${id}`);
+
+            res.writeHead(200, {'Content-Type': 'application/json' });
+            res.end(JSON.stringify(queryResult.recordset));
+        } catch (error) { 
+            console.error('Error executing query: ', error);
+            res.writeHead(500, {'Content-Type': 'application/json'});
+            res.end(JSON.stringify({message: 'Internal server error'}));
+        } finally {
+            sql.close();
+        }
     }
-        
+       
+    
+
     else {
             res.writeHead(404, { 'Content-Type': 'application/json' });
             res.end(JSON.stringify({ message: 'Route not found' }));
